@@ -26,8 +26,32 @@ class MakeNewCommand extends Commander
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $output->writeln('<info>Your ' . $input->getArgument('name') . ' is ready!</info>');
-        $output->writeln('<comment>Thank you for using Ark!</comment>');
+        $name = $this->cleanupName($input->getArgument('name'));
+        $path = $input->getArgument('path')
+            ? $input->getArgument('path') . DIRECTORY_SEPARATOR . $name
+            : getcwd() . DIRECTORY_SEPARATOR . $name;
+
+        if (file_exists($path)) {
+            $output->writeln('<error>Git: ' . $path . ' already exists!</error>');
+
+            return 1;
+        }
+
+        $output->writeln('<info>Git:</info> Creating new Ark project named ' . $name);
+        exec('composer create-project nasrulhazim/arch "' . $path . '" --prefer-dist');
+
+        if (file_exists($path)) {
+            chdir($path);
+            $this->gitInit();
+            $output->writeln('<info>Git:</info> Initialise, add all files and commit...');
+            $this->composerUpdate();
+            $output->writeln('<info>Composer:</info> Update dependencies...');
+            $this->gitCommitUpdateDependecies();
+            $output->writeln('<info>Git:</info> Commit dependencies...');
+        }
+
+        $output->writeln('<info>New Ark created: </info> ' . $input->getArgument('name') . ' is created at ' . $path);
+        $output->writeln('<info>Thank you for using Ark!</info>');
 
         return 0;
     }

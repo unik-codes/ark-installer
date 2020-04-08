@@ -33,6 +33,6 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "bin": [
-        "arch"
+        "ark"
     ]
 }
