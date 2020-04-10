@@ -12,6 +12,14 @@ $ composer global require unik-codes/ark-installer
 
 ## Usage
 
+Ark Installer come with 3 main commands:
+
+1. `ark new <project name> <path>` - Create a new Ark project
+2. `ark install <component>` - Install Ark component to the existing Laravel project
+3. `ark compose <path>` - Install Ark dependencies
+
+### Create a New Ark project
+
 To create a new Ark project, simply run:
 
 ```
@@ -27,6 +35,52 @@ $ ark new "You Project Name" "/var/www/"
 ```
 
 You should have the Ark created in `/var/www/your-project-name`.
+
+### Install Ark Dependencies
+
+You can install Ark related packages to existing Laravel project by running following command:
+
+```
+$ ark compose "/path-to-your-project"
+```
+
+Ark rely on following packages and you might need to further setup the Ark in your Laravel project.
+
+- [404labfr/laravel-impersonate](https://github.com/404labfr/laravel-impersonate)
+- [laravel/passport](https://github.com/laravel/passport)
+- [owen-it/laravel-auditing](https://github.com/owen-it/laravel-auditing)
+- [predis/predis](https://github.com/predis/predis)
+- [realrashid/sweet-alert](https://github.com/realrashid/sweet-alert)
+- [tightenco/ziggy](https://github.com/tightenco/ziggy)
+- [yadahan/laravel-authentication-log](https://github.com/yadahan/laravel-authentication-log)
+- [spatie/image-optimizer](https://github.com/spatie/image-optimizer)
+- [spatie/laravel-medialibrary](https://github.com/spatie/laravel-medialibrary)
+- [spatie/laravel-permission](https://github.com/spatie/laravel-permission)
+- [cleaniquecoders/blueprint-macro](https://github.com/cleaniquecoders/blueprint-macro)
+- [cleaniquecoders/laravel-observers](https://github.com/cleaniquecoders/laravel-observers)
+- [cleaniquecoders/laravel-uuid](https://github.com/cleaniquecoders/laravel-uuid)
+- [cleaniquecoders/laravel-helper](https://github.com/cleaniquecoders/laravel-helper)
+
+### Install Ark Component to the Existing Laravel Project
+
+You can use `ark install <component-name>` to install related component.
+
+Available components:
+
+- `medialibrary`
+- `migration`
+- `docs`
+- `seeder`
+- `support`
+- `model`
+
+To install the component:
+
+```
+$ ark install model "/path-to-your-project"
+```
+
+Do take note, some of the components are rely on the [Install Ark Dependencies](#install-ark-dependencies).
 
 ## Contributing
 

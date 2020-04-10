@@ -16,8 +16,8 @@ class MakeComposeCommand extends Commander
     {
         $this
             ->setName('composer')
-            ->setDescription('Install ark dependencies')
-            ->addArgument('path', InputArgument::OPTIONAL, 'Path of the project to be create');
+            ->setDescription('Install Ark dependencies')
+            ->addArgument('path', InputArgument::REQUIRED, 'Path of the Laravel project');
     }
 
     /**

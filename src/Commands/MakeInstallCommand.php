@@ -43,9 +43,9 @@ class MakeInstallCommand extends Commander
     {
         $this
             ->setName('install')
-            ->setDescription('Install package setup to existing Laravel project')
-            ->addArgument('name', InputArgument::REQUIRED, 'Package name')
-            ->addArgument('path', InputArgument::REQUIRED, 'Path of the project to install the package');
+            ->setDescription('Install Ark component to existing Laravel project')
+            ->addArgument('name', InputArgument::REQUIRED, 'Component name')
+            ->addArgument('path', InputArgument::REQUIRED, 'Path of the project to install the component');
     }
 
     /**
