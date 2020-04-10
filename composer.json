@@ -1,6 +1,6 @@
 {
     "name": "unik-codes/arch-installer",
-    "description": "Install Arch",
+    "description": "Install Ark project or it's components and dependencies.",
     "license": "MIT",
     "authors": [
         {
