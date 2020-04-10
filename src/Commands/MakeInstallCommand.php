@@ -15,22 +15,22 @@ class MakeInstallCommand extends Commander
 
     protected $configs = [
         'medialibrary' => [
-            'app/Config' => 'Do update <info>path_generator</info> to <info>\App\Config\MediaPathGenerator::class</info> in <info>config/medialibrary.php</info>.',
-            'app/Traits/HasMediaExtended.php'   => 'You may add in your model <info>use \App\Models\HasMediaExtended;</info>',
+            'app/Config'                      => 'Do update <info>path_generator</info> to <info>\App\Config\MediaPathGenerator::class</info> in <info>config/medialibrary.php</info>.',
+            'app/Traits/HasMediaExtended.php' => 'You may add in your model <info>use \App\Models\HasMediaExtended;</info>',
         ],
         'docs' => [
             'docs/' => 'Now you have your application standard document on <info>Code of Conduct, Contributing, Issue Template and Pull Request Template.</info>',
         ],
         'seeder' => [
-            'app/Traits/Seeds' => 'Now you have <info>Seeder Progress Bar</info> and <info>Seed Datum Trait.</info>'
+            'app/Traits/Seeds' => 'Now you have <info>Seeder Progress Bar</info> and <info>Seed Datum Trait.</info>',
         ],
         'support' => [
             'app/Support/' => 'Helpers are registered to you application. You may add as many helpers as you like in <info>app\Support</info> directory.',
         ],
         'model' => [
             'app/Models' => 'All models moved to <info>app/Models</info> and added <info>app/Models/Base</info>. Do update your <info>config/auth.php</info>. You may want to remove or update your existing User model in <info>app/</info>.',
-            'stubs' => '<info>Model stub updated.</info>'
-        ]
+            'stubs'      => '<info>Model stub updated.</info>',
+        ],
     ];
 
     protected $extras = [
@@ -74,19 +74,19 @@ class MakeInstallCommand extends Commander
         $messages = [];
         foreach ($this->configs($name) as $file => $message) {
             $location = $stub_path . $file;
-            
-            if($this->filesystem->isDirectory($location)) {
+
+            if ($this->filesystem->isDirectory($location)) {
                 $this->filesystem->copyDirectory($location, $path . $file);
                 $messages[] = $message;
             }
 
-            if($this->filesystem->isFile($location)) {
+            if ($this->filesystem->isFile($location)) {
                 $this->filesystem->copy($location, $path . $file);
                 $messages[] = $message;
             }
-            
+
             $method = 'handle' . ucfirst($name);
-            if(method_exists($this, $method)) {
+            if (method_exists($this, $method)) {
                 $this->{$method}();
             }
         }
@@ -107,12 +107,12 @@ class MakeInstallCommand extends Commander
 
     private function handleSupport()
     {
-        $json               = $this->getComposerConfig(rtrim($this->path, '/'));
-        $json->autoload->files = ["app/Support/_.php"];
-        
+        $json                  = $this->getComposerConfig(rtrim($this->path, '/'));
+        $json->autoload->files = ['app/Support/_.php'];
+
         $composer_file = $this->path . 'composer.json';
         $this->filesystem->put($composer_file, json_encode($json, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
-        
+
         $current_directory = getcwd();
         chdir($this->path);
         exec($this->findComposer() . ' dumpautoload -o -q');
