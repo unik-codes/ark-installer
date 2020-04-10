@@ -33,10 +33,6 @@ class MakeInstallCommand extends Commander
         ],
     ];
 
-    protected $extras = [
-        'support',
-    ];
-
     /**
      * Configure the command options.
      */
