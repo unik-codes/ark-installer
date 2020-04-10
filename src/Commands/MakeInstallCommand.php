@@ -18,6 +18,9 @@ class MakeInstallCommand extends Commander
             'app/Config'                      => 'Do update <info>path_generator</info> to <info>\App\Config\MediaPathGenerator::class</info> in <info>config/medialibrary.php</info>.',
             'app/Traits/HasMediaExtended.php' => 'You may add in your model <info>use \App\Models\HasMediaExtended;</info>',
         ],
+        'migration' => [
+            'database/migrations' => '<info>New migration installed.</info>',
+        ],
         'docs' => [
             'docs/' => 'Now you have your application standard document on <info>Code of Conduct, Contributing, Issue Template and Pull Request Template.</info>',
         ],
