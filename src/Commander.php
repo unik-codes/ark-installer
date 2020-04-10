@@ -11,7 +11,7 @@ class Commander extends Command
     /**
      * Filesystem.
      *
-     * @var Illuminate\Filesystem\Filesystem
+     * @var \Illuminate\Filesystem\Filesystem
      */
     protected $filesystem;
 
@@ -87,8 +87,6 @@ class Commander extends Command
      * Get Composer Configuration.
      *
      * @param string $path
-     *
-     * @return json
      */
     public function getComposerConfig($path)
     {
