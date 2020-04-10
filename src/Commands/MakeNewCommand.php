@@ -38,7 +38,7 @@ class MakeNewCommand extends Commander
         }
 
         $output->writeln('<info>Git:</info> Creating new Ark project named ' . $name);
-        exec('composer create-project nasrulhazim/arch "' . $path . '" --prefer-dist');
+        exec('composer create-project unik-codes/ark "' . $path . '" --prefer-dist');
 
         if (file_exists($path)) {
             chdir($path);

@@ -11,7 +11,7 @@ class Commander extends Command
     /**
      * Filesystem.
      *
-     * @var Symfony\Component\Filesystem\Filesystem
+     * @var Illuminate\Filesystem\Filesystem
      */
     protected $filesystem;
 
